@@ -12,5 +12,12 @@
 
     <artifactId>shop-common</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+        </dependency>
+    </dependencies>
+
     <packaging>jar</packaging>
 </project>
