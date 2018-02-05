@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://cxf.apache.org/jaxws
+        http://cxf.apache.org/schemas/jaxws.xsd
+        ">
+        <!--配置服务:发布soap服务，对JaxWsServiceFactoryBean封装-->
+        <jaxws:server  serviceClass="cxf.interfaces.WeatherInterface" address="/weather">
+            <!--配置服务接口实现类-->
+            <jaxws:serviceBean>
+                <ref bean="weatherInterfaceImpl"></ref>
+            </jaxws:serviceBean>
+            <!--配置拦截器:没有拦截器则可不配置-->
+
+        </jaxws:server>
+        <!--配置服务接口实现类bean-->
+        <bean id="weatherInterfaceImpl" class="cxf.service.WeatherInterfaceImpl"></bean>
+        <!--配置拦截器bean-->
+</beans>
